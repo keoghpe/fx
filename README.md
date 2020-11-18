@@ -26,7 +26,7 @@ You've got this great idea for a function you'd like to call
 definition file with the following command:
 
 ```sh
-% rails generate fx:function uppercase_users_name
+% rails generate fx:function uppercase_users_name --migration true
       create  db/functions/uppercase_users_name_v01.sql
       create  db/migrate/[TIMESTAMP]_create_function_uppercase_users_name.rb
 ```
@@ -38,7 +38,7 @@ Next, let's add a trigger called `uppercase_users_name` to call our new
 function each time we `INSERT` on the `users` table.
 
 ```sh
-% rails generate fx:trigger uppercase_users_name table_name:users
+% rails generate fx:trigger uppercase_users_name table_name:users --migration true
       create  db/triggers/uppercase_users_name_v01.sql
       create  db/migrate/[TIMESTAMP]_create_trigger_uppercase_users_name.rb
 ```
@@ -65,7 +65,7 @@ statements. The migration is reversible and the schema will be dumped into your
 Here's where F(x) really shines. Run that same function generator once more:
 
 ```sh
-% rails generate fx:function uppercase_users_name
+% rails generate fx:function uppercase_users_name --migration true
       create  db/functions/uppercase_users_name_v02.sql
       create  db/migrate/[TIMESTAMP]_update_function_uppercase_users_name_to_version_2.rb
 ```
